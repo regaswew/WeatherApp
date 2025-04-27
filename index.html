@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.4.0/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.4.0/dist/ol.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Навигация -->
+        <nav class="navbar">
+            <div class="logo">WeatherApp</div>
+            <div class="nav-links">
+                <a href="#" class="active" data-page="home">Главная</a>
+                <a href="#" data-page="forecast">Прогноз</a>
+                <a href="#" data-page="favorites">Избранное</a>
+                <a href="#" id="loginBtn">Войти</a>
+                <a href="#" id="registerBtn">Регистрация</a>
+                <a href="#" id="logoutBtn" style="display: none;">Выйти</a>
+            </div>
+        </nav>
+
+        <!-- Главная страница -->
+        <div class="page active" id="home">
+            <div class="search-container">
+                <form id="searchForm">
+                    <input type="text" id="citySearch" placeholder="Введите название города" required>
+                    <button type="submit" id="searchBtn">Поиск</button>
+                </form>
+            </div>
+            <div class="weather-container">
+                <div class="current-weather">
+                    <h2>Текущая погода</h2>
+                    <div class="weather-info">
+                        <div class="temperature"></div>
+                        <div class="description"></div>
+                        <div class="details"></div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div class="map-controls">
+                        <button class="map-control-btn active" data-type="base">Обычная</button>
+                        <button class="map-control-btn" data-type="satellite">Спутник</button>
+                        <button class="map-control-btn" data-type="terrain">Рельеф</button>
+                    </div>
+                    <div class="route-controls">
+                        <div class="route-inputs">
+                            <input type="text" id="routeFrom" placeholder="Откуда">
+                            <input type="text" id="routeTo" placeholder="Куда">
+                            <button id="findRoute">Найти маршрут</button>
+                            <button id="useGPS">Использовать GPS</button>
+                        </div>
+                        <div id="routeInfo" class="route-info"></div>
+                    </div>
+                    <div id="weatherMap"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Страница прогноза -->
+        <div class="page" id="forecast">
+            <h2>Прогноз на неделю</h2>
+            <div class="forecast-container"></div>
+        </div>
+
+        <!-- Страница избранного -->
+        <div class="page" id="favorites">
+            <h2>Избранные города</h2>
+            <div class="favorites-container"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <input type="text" placeholder="Имя" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
